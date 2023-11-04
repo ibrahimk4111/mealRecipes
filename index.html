@@ -22,52 +22,40 @@
   <body>
     <!-- ================ Navbar Area ================ -->
     <header class="container">
-      <div class="header-style mt-3">
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand nav-logo" href="#">
-              <img src="./images/logo.svg" alt="" />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div id="navbar-font" class="navbar-nav ms-auto">
-                <a class="nav-link ms-3 me-3" href="#">Home</a>
-                <a class="nav-link ms-3 me-3" href="#">About</a>
-                <a class="nav-link ms-3 me-3" href="#">Recipes</a>
-                <a class="nav-link ms-3 me-3" href="#">Blog</a>
-              </div>
-            </div>
-          </div>
-        </nav>
+      <!-- Navigation Bar -->
+      <nav class="flex justify-between items-center p-3">
+        <div>
+          <img src="./images/logo.svg" alt="" class="w-40" />
+        </div>
+        <ul class="flex justify-between items-center gap-x-10 uppercase">
+          <li ><a href="#">Home</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="p-2 bg-gray-100 rounded-md"><a href="https://themealdb.com/api.php">Api Link</a></li>
+        </ul>
+      </nav>
+      <!-- ================ Search Bar Area ================ -->
+      <div class="flex justify-center items-center my-5">
+        <input
+          type="text"
+          id="meal-inputed"
+          class="w-40 h-11 focus:outline-none rounded-l-md px-2"
+          value=""
+          onchange="inputedText()"
+          onmousedown="clearSelection()"
+        />
+        <select
+          id="meal-select"
+          class="w-40 h-11 focus:outline-none px-2"
+          value=""
+          onchange="selectedText()"
+        ></select>
+        <button class="w-20 h-11 bg-gray-200 rounded-r-md" type="button">
+          Search
+        </button>
       </div>
     </header>
 
     <main class="container">
-      <!-- ================ Search Bar Area ================ -->
-      <div class=" flex justify-center items-center my-5">
-        <input type="text" id="meal-inputed" class="w-40 h-11 focus:outline-none rounded-l-md px-2" value="" onchange="inputedText()" onmousedown="clearSelection()">
-        <select id="meal-select" class="w-40 h-11 focus:outline-none px-2" value="" onchange="selectedText()">
-          
-        </select>
-        <button
-          class="w-20 h-11 bg-gray-200 rounded-r-md"
-          type="button"
-        >
-          Search
-        </button>
-      </div>
-
       <!-- ================ Meal Details Area ================ -->
       <div
         class="max-w-[1200px] mx-auto grid md:grid-cols-4 sm:grid-cols-3 gap-3 relative"

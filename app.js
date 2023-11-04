@@ -20,9 +20,10 @@ async function newElementCreate(apiUrl) {
     const mealsData = await fetchedFunc(apiUrl);
     let elements = "";
     // Populate the categories list
-    mealsData ? mealsData.meals.map((meal) => {
-      elements += `
-        <div class="relative h-auto w-full flex flex-col justify-start bg-white rounded-md overflow-hidden">
+    mealsData
+      ? mealsData.meals.map((meal) => {
+          elements += `
+        <div id="card" class="relative h-auto w-full flex flex-col justify-start bg-white rounded-md overflow-hidden">
             <div class="group h-full w-full object-center relative cursor-pointer">
                 <p class="group-hover:bg-black group-hover:bg-opacity-30 w-full h-full absolute top-0 left-0 flex items-center justify-center transition-all duration-500 ease-in">
                     <svg class="scale-0 group-hover:scale-100 transition-all duration-300 ease" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,255.998,255.998">
@@ -33,7 +34,8 @@ async function newElementCreate(apiUrl) {
             </div>
             <p class="text-center p-2">${meal.strMeal}</p>
         </div>`;
-    }): `<p>Wait</p>`
+        })
+      : `<p>Wait</p>`;
 
     mealList.innerHTML = elements;
   } catch (error) {
@@ -44,7 +46,7 @@ async function newElementCreate(apiUrl) {
         <p class="w-full text-center text-xl">এই খাবারটি এখন নেই। দয়া করে অন্য একটি খাবার পছন্দ করুন। &#128578;</p>
       </div>
     `;
-    mealList.innerHTML = newElement
+    mealList.innerHTML = newElement;
     console.error("Error", error);
   }
 }
@@ -55,19 +57,18 @@ function inputedText() {
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealInput.value}`;
   newElementCreate(apiUrl1);
 }
-
-function clearSelection (){
-  if((mealInput.value).length == 0) {
-    mealSelected.value = ""
+// fetching data according to selected text
+function clearSelection() {
+  if (mealInput.value.length == 0) {
+    mealSelected.value = "";
   }
 }
 
-
 // fetching data according to selected text
 function selectedText() {
-  console.log(mealSelected.value)
-  if(mealSelected.value) {
-    mealInput.value = ""
+  console.log(mealSelected.value);
+  if (mealSelected.value) {
+    mealInput.value = "";
   }
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealSelected.value}`;
   newElementCreate(apiUrl1);
@@ -92,7 +93,7 @@ async function newOptionCreate(categoriesUrl) {
     });
 
     mealSelected.innerHTML = elements;
-    console.log(mealInput.value)
+    console.log(mealInput.value);
   } catch (error) {
     console.log("Error:", error);
   }
