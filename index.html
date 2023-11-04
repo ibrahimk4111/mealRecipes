@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
             <a class="navbar-brand nav-logo" href="#">
-              <img src="images/logo.svg" alt="" />
+              <img src="./images/logo.svg" alt="" />
             </a>
             <button
               class="navbar-toggler"
@@ -55,31 +55,25 @@
 
     <main class="container">
       <!-- ================ Search Bar Area ================ -->
-      <section class="mt-5 mb-5">
-        <form class="col-md-6 mx-auto">
-          <div class="input-group">
-            <input
-              id="meal-input"
-              type="text"
-              class="form-control bg-light"
-              placeholder="Search for Meal..."
-              aria-label="Search"
-              value="egg"
-              onchange="inputedText()"
-            />
-            <div class="input-group-append">
-              <button id="meal-submit" class="btn" type="button" onclick="inputedText()">Search</button>
-            </div>
-          </div>
-        </form>
-        <h4 id="no-meal-found" class="text-center mt-5"></h4>
-      </section>
-
-      <!-- ================ Meal Details Area ================ -->
-      <div class=" grid grid-cols-4 gap-3 relative" id="meal-list">
-
+      <div class=" flex justify-center items-center my-5">
+        <input type="text" id="meal-inputed" class="w-60 h-11 focus:outline-none rounded-l-md px-2" value="" onchange="inputedText()">
+        <select id="meal-select" class="w-40 h-11 focus:outline-none px-2" value="" onchange="selectedText()">
+          
+        </select>
+        <button
+          id="meal-submit"
+          class="btn"
+          type="button"
+        >
+          Search
+        </button>
       </div>
 
+      <!-- ================ Meal Details Area ================ -->
+      <div
+        class="max-w-[1200px] mx-auto grid md:grid-cols-4 sm:grid-cols-3 gap-3 relative"
+        id="meal-list"
+      ></div>
 
       <!-- ================ Searched Meal Result Area ================ -->
       <section id="meal-info-section" class="row"></section>
