@@ -56,13 +56,12 @@
     <main class="container">
       <!-- ================ Search Bar Area ================ -->
       <div class=" flex justify-center items-center my-5">
-        <input type="text" id="meal-inputed" class="w-60 h-11 focus:outline-none rounded-l-md px-2" value="" onchange="inputedText()">
+        <input type="text" id="meal-inputed" class="w-40 h-11 focus:outline-none rounded-l-md px-2" value="" onchange="inputedText()" onmousedown="clearSelection()">
         <select id="meal-select" class="w-40 h-11 focus:outline-none px-2" value="" onchange="selectedText()">
           
         </select>
         <button
-          id="meal-submit"
-          class="btn"
+          class="w-20 h-11 bg-gray-200 rounded-r-md"
           type="button"
         >
           Search

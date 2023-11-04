@@ -20,7 +20,7 @@ async function newElementCreate(apiUrl) {
     const mealsData = await fetchedFunc(apiUrl);
     let elements = "";
     // Populate the categories list
-    mealsData.meals.map((meal) => {
+    mealsData ? mealsData.meals.map((meal) => {
       elements += `
         <div class="relative h-auto w-full flex flex-col justify-start bg-white rounded-md overflow-hidden">
             <div class="group h-full w-full object-center relative cursor-pointer">
@@ -33,19 +33,18 @@ async function newElementCreate(apiUrl) {
             </div>
             <p class="text-center p-2">${meal.strMeal}</p>
         </div>`;
-    });
+    }): `<p>Wait</p>`
 
     mealList.innerHTML = elements;
   } catch (error) {
-    const errorDiv = document.createElement('div')
+    // const errorDiv = document.createElement('div')
     const newElement = `
-      <div class="flex flex-col items-center justify-center gap-3">
+      <div class="flex flex-col items-center justify-center gap-3 col-span-12">
         <span style='font-size:200px;'>&#128577;</span>
         <p class="w-full text-center text-xl">এই খাবারটি এখন নেই। দয়া করে অন্য একটি খাবার পছন্দ করুন। &#128578;</p>
       </div>
     `;
-    errorDiv.innerHTML = newElement
-    mealList.replaceWith(errorDiv);
+    mealList.innerHTML = newElement
     console.error("Error", error);
   }
 }
@@ -53,12 +52,14 @@ window.addEventListener("onload", newElementCreate(apiUrl));
 
 // fetching data according to inputed text
 function inputedText() {
-  console.log(mealInput.value)
-  if(mealInput.value) {
-    mealSelected.value = ""
-  }
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealInput.value}`;
   newElementCreate(apiUrl1);
+}
+
+function clearSelection (){
+  if((mealInput.value).length == 0) {
+    mealSelected.value = ""
+  }
 }
 
 
