@@ -16,25 +16,27 @@ async function fetchedFunc(url) {
 }
 
 // Function to create new card as per fetched data
-async function newElementCreate(apiUrl) {
+async function newElementCreate(x) {
   try {
-    const mealsData = await fetchedFunc(apiUrl);
+    const mealsData = await fetchedFunc(x);
     let elements = "";
     // Populate the categories list
     mealsData
       ? mealsData.meals.map((meal) => {
           elements += `
-        <div class="relative h-auto w-full flex flex-col justify-start bg-white rounded-md overflow-hidden">
-            <div class="group h-full w-full object-center relative cursor-pointer group-hover:overflow-hidden overflow-hidden">
+          <div class="relative h-auto w-full flex flex-col justify-between bg-white rounded-md overflow-hidden" data-card-id=${meal.idMeal}>
+            <div class="group h-auto w-full object-center relative cursor-pointer group-hover:overflow-hidden overflow-hidden" data-card-id=${meal.idMeal}>
                 <div 
                   class="group-hover:bg-black group-hover:bg-opacity-30 w-full h-full absolute top-0 left-0 flex items-center justify-center transition-all duration-500 ease-in" 
                   data-card-id=${meal.idMeal}>
+                  
                   <img data-card-id=${meal.idMeal} src="./images/external-link.png" alt="link-icon" class="w-5 h-5 scale-0 group-hover:scale-100 transition-all duration-300 ease-in" >
+
                 </div>
                 <img src=${meal.strMealThumb} class="max-h-full max-w-full object-cover" alt="...">
             </div>
-            <p class="text-center p-2" data-card-id=${meal.idMeal}>${meal.strMeal}</p>
-        </div>`;
+            <div class="text-center p-2 bg-white h-auto" data-card-id=${meal.idMeal}>${meal.strMeal}</div>
+            </div>`;
         })
       : `<p>Wait</p>`;
 
@@ -51,7 +53,8 @@ async function newElementCreate(apiUrl) {
     console.error("Error", error);
   }
 }
-window.addEventListener("onload", newElementCreate(apiUrl));
+
+newElementCreate(apiUrl)
 
 // fetching data according to inputed text
 function inputedText() {
@@ -109,31 +112,40 @@ mealList.addEventListener("click", async (event) => {
     const cardId = target.getAttribute("data-card-id");
 
     let apiUrlForSingleData = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${cardId}`;
-    const cardInfo = await fetchedFunc(apiUrlForSingleData);
+    const mealsData = await fetchedFunc(apiUrlForSingleData);
+    let elements = "";
+    // Populate the categories list
+    mealsData.meals.map((meal) => {
+          elements += `
+          <div class="fixed bg-white w-full h-full top-0 left-0"></div>
+          <div class="fixed md:top-[20vh] top-[10vh] left-[12vw] right-[12vw] w-auto h-auto md:border-2 rounded-md flex justify-center items-center">
+            <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
+              <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center flex justify-center items-center">
+                <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
+              </div>
+              <div class="text-center w-full h-auto col-span-2 rounded-r-md">
+                <h2 class='text-2xl'>${meal.strMeal}</h2>
+                <div>
+                strArea
+                : 
+                "Malaysian"
+                strCategory
+                : 
+                "Dessert"
+                strInstructions
+:
+strYoutube
+:
+                </div>
+              </div>
+            </div>
+          </div>`;
 
-    // let elements = "";
-    // // Populate the categories list
-    // cardInfo
-    //   ? cardInfo.meals.map((meal) => {
-    //       elements += `
-    //     <div class="relative h-auto w-full flex flex-col justify-start bg-white rounded-md overflow-hidden">
-    //         <div class="group h-full w-full object-center relative cursor-pointer group-hover:overflow-hidden overflow-hidden">
-    //             <li 
-    //               class="group-hover:bg-black group-hover:bg-opacity-30 w-full h-full absolute top-0 left-0 flex items-center justify-center transition-all duration-500 ease-in" >
-    //               <a href="./singleCard.html">
-    //                 <img src="./images/external-link.png" alt="link-icon" class="z-10 w-5 h-5 scale-0 group-hover:scale-100 transition-all duration-300 ease-in" >
-    //               </a>
-    //             </li>
-    //             <img src=${meal.strMealThumb} class="max-h-full max-w-full object-cover" alt="...">
-    //         </div>
-    //         <p class="text-center p-2">${meal.strMeal}</p>
-    //     </div>`;
-    //     })
-    //   : `<p>Wait</p>`;
+          console.log(meal)
+        })
 
-    // mealInfoSection.innerHTML = elements;
-
-    console.log(cardId, " : ", cardInfo.meals);
+      mealInfoSection.innerHTML = elements;
+      document.body.style.overflowY = 'hidden'
   } catch (error) {
     console.log("error : ", error);
   }
