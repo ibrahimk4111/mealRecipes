@@ -129,16 +129,10 @@ mealList.addEventListener("click", async (event) => {
               <div class="text-center w-full h-auto col-span-2 rounded-r-md">
                 <h2 class='text-2xl'>${meal.strMeal}</h2>
                 <div>
-                strArea
-                : 
-                "Malaysian"
-                strCategory
-                : 
-                "Dessert"
-                strInstructions
-:
-strYoutube
-:
+                <p>${meal.strArea}</p>
+                <p>${meal.strCategory}</p>
+                <p>${meal.strInstructions}</p>
+                <a href=`${meal.strYoutube}`>${meal.strYoutube}</a>
                 </div>
               </div>
             </div>
