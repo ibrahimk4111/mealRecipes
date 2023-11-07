@@ -71,7 +71,6 @@ function clearSelection() {
     mealSelected.value = mealSelected.value;
   }
 }
-mealInput.addEventListener("click", clearSelection())
 
 // fetching data according to selected text
 function selectedText() {
