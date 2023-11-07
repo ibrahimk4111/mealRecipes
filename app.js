@@ -134,7 +134,7 @@ mealList.addEventListener("click", async (event) => {
                 <p>${meal.strArea}</p>
                 <p>${meal.strCategory}</p>
                 <p>${meal.strInstructions}</p>
-                <a href=`${meal.strYoutube}`>${meal.strYoutube}</a>
+                <a href=${meal.strYoutube}>${meal.strYoutube}</a>
                 </div>
               </div>
             </div>
