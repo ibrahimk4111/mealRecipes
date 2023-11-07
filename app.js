@@ -64,12 +64,14 @@ function inputedText() {
 
 // fetching data according to selected text
 function clearSelection() {
-  if (mealInput.value.length == 0) {
+  if (mealInput.value.length > 0 ) {
     mealSelected.value = "";
   }
+  else{
+    mealSelected.value = mealSelected.value;
+  }
 }
-mealInput.addEventListener("mouseenter", clearSelection())
-mealInput.addEventListener("mouseleave", ()=>{setTimeOut(clearSelection(),0)})
+mealInput.addEventListener("click", clearSelection())
 
 // fetching data according to selected text
 function selectedText() {
