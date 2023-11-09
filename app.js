@@ -122,17 +122,17 @@ mealList.addEventListener("click", async (event) => {
     mealsData.meals.map((meal) => {
           elements += `
           <div class="fixed bg-white w-full h-full top-0 left-0"></div>
-          <div class="fixed md:top-[20vh] top-[10vh] left-[12vw] right-[12vw] w-auto h-auto md:border-2 rounded-md flex justify-center items-center">
-            <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
-              <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center flex justify-center items-center">
+          <div class="fixed md:top-[20vh] top-[2vh] md:left-[12vw] left-[2vw] md:right-[12vw] right-[2vw] w-auto h-auto md:border-2 rounded-md flex justify-center items-center">
+            <div class="grid md:grid-cols-3 grid-cols-1 gap-5">
+              <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center">
                 <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
               </div>
               <div class="text-center w-full h-auto col-span-2 rounded-r-md">
                 <h2 class='text-2xl'>${meal.strMeal}</h2>
-                <div>
+                <div class="flex flex-col justify-center items-center gap-3">
                 <p>${meal.strArea}</p>
                 <p>${meal.strCategory}</p>
-                <p>${meal.strInstructions}</p>
+                <p class="text-justify">${meal.strInstructions}</p>
                 <a href=${meal.strYoutube}><i class="fa-brands fa-youtube" style="font-size:48px;"></i></a>
                 </div>
               </div>
