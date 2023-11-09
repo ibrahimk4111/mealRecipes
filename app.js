@@ -54,17 +54,20 @@ async function newElementCreate(x) {
   }
 }
 
-newElementCreate(apiUrl)
+newElementCreate(apiUrl);
 
 // fetching data according to inputed text
 function inputedText() {
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealInput.value}`;
   newElementCreate(apiUrl1);
 }
+
 // fetching data according to selected text
 function clearSelection() {
-  if (mealInput.value.length == 0) {
+  if (mealInput.value.length > 0) {
     mealSelected.value = "";
+  } else {
+    mealSelected.value = mealSelected.value;
   }
 }
 
@@ -116,36 +119,34 @@ mealList.addEventListener("click", async (event) => {
     let elements = "";
     // Populate the categories list
     mealsData.meals.map((meal) => {
-          elements += `
+      // md:top-[20vh] top-[2vh] md:left-[12vw] left-[2vw] md:right-[12vw] right-[2vw]
+      elements += `
           <div class="fixed bg-white w-full h-full top-0 left-0"></div>
-          <div class="fixed md:top-[20vh] top-[10vh] left-[12vw] right-[12vw] w-auto h-auto md:border-2 rounded-md flex justify-center items-center">
-            <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
-              <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center flex justify-center items-center">
-                <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
-              </div>
-              <div class="text-center w-full h-auto col-span-2 rounded-r-md">
-                <h2 class='text-2xl'>${meal.strMeal}</h2>
-                <div>
-                strArea
-                : 
-                "Malaysian"
-                strCategory
-                : 
-                "Dessert"
-                strInstructions
-:
-strYoutube
-:
+          <div class="fixed top-0 left-0 p-5 ">
+            <div class="relative flex justify-center items-center w-auto h-auto md:border-2 rounded-md">
+              <div class="grid md:grid-cols-3 grid-cols-1 gap-5">
+                <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center">
+                  <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
+                </div>
+                <div class=" flex flex-col justify-center items-start w-full h-auto col-span-2 rounded-r-md px-3 py-2 gap-1">
+                  <h2 class='text-2xl font-bold'>${meal.strMeal}</h2>
+                  <hr class="h-2" />
+                  <div class="flex flex-col justify-center items-start gap-3">
+                    <p>Region : ${meal.strArea}</p>
+                    <p>Category : ${meal.strCategory}</p>
+                    <p class="text-justify">${meal.strInstructions}</p>
+                    <a href=${meal.strYoutube}><i class="fa fa-youtube" style="font-size:48px;"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>`;
 
-          console.log(meal)
-        })
+      console.log(meal);
+    });
 
-      mealInfoSection.innerHTML = elements;
-      document.body.style.overflowY = 'hidden'
+    mealInfoSection.innerHTML = elements;
+    document.body.style.overflowY = "hidden";
   } catch (error) {
     console.log("error : ", error);
   }
