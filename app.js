@@ -60,10 +60,7 @@ newElementCreate(apiUrl);
 function inputedText() {
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealInput.value}`;
   newElementCreate(apiUrl1);
-}
 
-// fetching data according to selected text
-function clearSelection() {
   if (mealInput.value.length > 0) {
     mealSelected.value = "";
   } else {
@@ -73,7 +70,6 @@ function clearSelection() {
 
 // fetching data according to selected text
 function selectedText() {
-  console.log(mealSelected.value);
   if (mealSelected.value) {
     mealInput.value = "";
   }
@@ -121,9 +117,10 @@ mealList.addEventListener("click", async (event) => {
     mealsData.meals.map((meal) => {
       // md:top-[20vh] top-[2vh] md:left-[12vw] left-[2vw] md:right-[12vw] right-[2vw]
       elements += `
-          <div class="fixed bg-white w-full h-full top-0 left-0"></div>
-          <div class="fixed top-0 left-0 p-5 ">
+          <div class="fixed bg-white w-full h-full top-0 left-0" id="modalBg"></div>
+          <div class="fixed top-0 left-0 p-5" id="modalContent">
             <div class="relative flex justify-center items-center w-auto h-auto md:border-2 rounded-md">
+              <div class="absolute top-5 right-5 hover:bg-black w-6 line-h-8 hover:text-white text-center z-100 cursor-pointer rounded-md font-bold" onclick="backFunc()">X</div>
               <div class="grid md:grid-cols-3 grid-cols-1 gap-5">
                 <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center">
                   <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
@@ -135,7 +132,7 @@ mealList.addEventListener("click", async (event) => {
                     <p>Region : ${meal.strArea}</p>
                     <p>Category : ${meal.strCategory}</p>
                     <p class="text-justify">${meal.strInstructions}</p>
-                    <a href=${meal.strYoutube}>
+                    <a href=${meal.strYoutube} target="_blank">
                       <img src="./images/icons8-youtube.gif" alt="...">
                     </a>
                   </div>
@@ -148,8 +145,13 @@ mealList.addEventListener("click", async (event) => {
     });
 
     mealInfoSection.innerHTML = elements;
+    mealInfoSection.classList.remove("hidden")
     document.body.style.overflowY = "hidden";
   } catch (error) {
     console.log("error : ", error);
   }
 });
+
+function backFunc(){
+  mealInfoSection.classList.add("hidden")
+}

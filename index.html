@@ -29,8 +29,8 @@
           <img src="./images/logo.svg" alt="" class="w-40" />
         </div>
         <ul class="flex justify-between items-center gap-x-10 uppercase">
-          <li ><a href="#">Home</a></li>
-          <li><a href="./singleCard.html">Contact</a></li>
+          <li ><a href="/">Home</a></li>
+          <li><a href="https://github.com/ibrahimk4111" target="_blank">Contact</a></li>
           <li class="p-2 bg-gray-100 rounded-md"><a href="https://themealdb.com/api.php">Api Link</a></li>
         </ul>
       </nav>
@@ -42,7 +42,6 @@
           class="w-40 h-11 focus:outline-none rounded-l-md px-2"
           value=""
           onchange="inputedText()"
-          onchange="clearSelection()"
         />
         <select
           id="meal-select"
@@ -50,7 +49,7 @@
           value=""
           onchange="selectedText()"
         ></select>
-        <button class="w-20 h-11 bg-gray-200 rounded-r-md" type="button">
+        <button class="w-20 h-11 bg-gray-200 rounded-r-md" type="button" onchange="inputedText()">
           Search
         </button>
       </div>
@@ -65,7 +64,7 @@
     </div>
     
     <!-- ================ Searched Meal Result Area ================ -->
-    <section id="meal-info-section">
+    <section id="meal-info-section" class="">
     </section>
     </main>
 
