@@ -64,9 +64,16 @@ function inputedText() {
 
 // fetching data according to selected text
 function clearSelection() {
+
   if (mealInput.value.length > 0) {
+
+  if (mealInput.value.length > 0 ) {
+
     mealSelected.value = "";
   } else {
+    mealSelected.value = mealSelected.value;
+  }
+  else{
     mealSelected.value = mealSelected.value;
   }
 }
@@ -121,6 +128,7 @@ mealList.addEventListener("click", async (event) => {
     mealsData.meals.map((meal) => {
       elements += `
           <div class="fixed bg-white w-full h-full top-0 left-0"></div>
+
           <div class="fixed top-0 left-0 p-5 ">
             <div class="relative flex justify-center items-center w-auto h-auto md:border-2 rounded-md">
               <div class="grid md:grid-cols-3 grid-cols-1 gap-5">
@@ -136,6 +144,18 @@ mealList.addEventListener("click", async (event) => {
                     <p class="text-justify">${meal.strInstructions}</p>
                     <a href=${meal.strYoutube}><i class="fa fa-youtube" style="font-size:48px;"></i></a>
                   </div>
+          <div class="fixed md:top-[20vh] top-[2vh] md:left-[12vw] left-[2vw] md:right-[12vw] right-[2vw] w-auto h-auto md:border-2 rounded-md flex justify-center items-center">
+            <div class="grid md:grid-cols-3 grid-cols-1 gap-5">
+              <div class="relative w-full h-full overflow-hidden rounded-l-md flex justify-center items-center">
+                <img src=${meal.strMealThumb} class="max-h-full md:w-full w-80 object-cover object-center" alt="...">
+              </div>
+              <div class="text-center w-full h-auto col-span-2 rounded-r-md">
+                <h2 class='text-2xl'>${meal.strMeal}</h2>
+                <div class="flex flex-col justify-center items-center gap-3">
+                <p>${meal.strArea}</p>
+                <p>${meal.strCategory}</p>
+                <p class="text-justify">${meal.strInstructions}</p>
+                <a href=${meal.strYoutube}><i class="fa-brands fa-youtube" style="font-size:48px;"></i></a>
                 </div>
               </div>
             </div>
