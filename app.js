@@ -135,7 +135,9 @@ mealList.addEventListener("click", async (event) => {
                     <p>Region : ${meal.strArea}</p>
                     <p>Category : ${meal.strCategory}</p>
                     <p class="text-justify">${meal.strInstructions}</p>
-                    <a href=${meal.strYoutube}><i class="fa fa-youtube" style="font-size:48px;"></i></a>
+                    <a href=${meal.strYoutube}>
+                      <img src="./images/icons8-youtube.gif" alt="...">
+                    </a>
                   </div>
                 </div>
               </div>
