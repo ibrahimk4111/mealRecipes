@@ -119,7 +119,6 @@ mealList.addEventListener("click", async (event) => {
     let elements = "";
     // Populate the categories list
     mealsData.meals.map((meal) => {
-      // md:top-[20vh] top-[2vh] md:left-[12vw] left-[2vw] md:right-[12vw] right-[2vw]
       elements += `
           <div class="fixed bg-white w-full h-full top-0 left-0"></div>
           <div class="fixed top-0 left-0 p-5 ">
