@@ -60,16 +60,13 @@ newElementCreate(apiUrl);
 function inputedText() {
   const apiUrl1 = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealInput.value}`;
   newElementCreate(apiUrl1);
-}
-
-// fetching data according to selected text
-function clearSelection() {
   if (mealInput.value.length > 0) {
     mealSelected.value = "";
   } else {
     mealSelected.value = mealSelected.value;
   }
 }
+
 
 // fetching data according to selected text
 function selectedText() {
