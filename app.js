@@ -24,14 +24,12 @@ async function newElementCreate(x) {
     mealsData
       ? mealsData.meals.map((meal) => {
           elements += `
-          <div class="relative h-auto w-full flex flex-col justify-between bg-white rounded-md overflow-hidden" data-card-id=${meal.idMeal}>
+          <div class="relative w-full h-auto flex flex-col justify-between bg-white rounded-md overflow-hidden" data-card-id=${meal.idMeal}>
             <div class="group h-auto w-full object-center relative cursor-pointer group-hover:overflow-hidden overflow-hidden" data-card-id=${meal.idMeal}>
                 <div 
                   class="group-hover:bg-black group-hover:bg-opacity-30 w-full h-full absolute top-0 left-0 flex items-center justify-center transition-all duration-500 ease-in" 
                   data-card-id=${meal.idMeal}>
-                  
                   <img data-card-id=${meal.idMeal} src="./images/external-link.png" alt="link-icon" class="w-5 h-5 scale-0 group-hover:scale-100 transition-all duration-300 ease-in" >
-
                 </div>
                 <img src=${meal.strMealThumb} class="max-h-full max-w-full object-cover" alt="...">
             </div>

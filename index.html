@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Hungry Monster</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -24,32 +27,64 @@
     <!-- ================ Navbar Area ================ -->
     <header class="container">
       <!-- Navigation Bar -->
-      <nav class="flex justify-between items-center p-3">
+      <nav class="flex justify-between items-center md:pb-5 pt-2 ">
         <div>
-          <img src="./images/logo.svg" alt="" class="w-40" />
+          <img src="./images/logo.svg" alt="" class="md:w-28 w-16" />
         </div>
-        <ul class="flex justify-between items-center gap-x-10 uppercase">
-          <li ><a href="#">Home</a></li>
-          <li><a href="https://github.com/ibrahimk4111" target="_blank">Contact</a></li>
-          <li class="p-2 bg-gray-100 rounded-md"><a href="https://themealdb.com/api.php">Api Link</a></li>
+        <div class="lg:flex justify-center items-center hidden">
+          <select
+            id="meal-select"
+            class="w-40 h-11 bg-gray-200 rounded-l-md px-2"
+            value=""
+            onchange="selectedText()"
+          ></select>
+          <input
+            type="text"
+            id="meal-inputed"
+            class=" h-11 focus:outline-none px-2"
+            value=""
+            onchange="inputedText()"
+          />
+          <button
+            class="w-20 h-11 bg-gray-200 rounded-r-md"
+            type="button"
+            onchange="inputedText()"
+          >
+            Search
+          </button>
+        </div>
+        <ul class="flex justify-between items-center gap-x-5 text-base">
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="https://github.com/ibrahimk4111" target="_blank"
+              >Contact</a
+            >
+          </li>
+          <li class="p-2 bg-gray-100 rounded-md">
+            <a href="https://themealdb.com/api.php">Api Link</a>
+          </li>
         </ul>
       </nav>
       <!-- ================ Search Bar Area ================ -->
-      <div class="flex justify-center items-center my-5">
-        <input
-          type="text"
-          id="meal-inputed"
-          class="w-40 h-11 focus:outline-none rounded-l-md px-2"
-          value=""
-          onchange="inputedText()"
-        />
+      <div class="flex justify-center items-center py-3 lg:hidden">
         <select
           id="meal-select"
-          class="w-40 h-11 focus:outline-none px-2"
+          class="w-40 h-11 bg-gray-200 rounded-l-md px-2"
           value=""
           onchange="selectedText()"
         ></select>
-        <button class="w-20 h-11 bg-gray-200 rounded-r-md" type="button" onchange="inputedText()">
+        <input
+          type="text"
+          id="meal-inputed"
+          class=" h-11 focus:outline-none px-2"
+          value=""
+          onchange="inputedText()"
+        />
+        <button
+          class="w-20 h-11 bg-gray-200 rounded-r-md"
+          type="button"
+          onchange="inputedText()"
+        >
           Search
         </button>
       </div>
@@ -58,14 +93,12 @@
     <main class="container">
       <!-- ================ Meal Details Area ================ -->
       <div
-        class="max-w-[1200px] mx-auto grid md:grid-cols-4 sm:grid-cols-3 gap-3 relative"
+        class=" max-w-[1200px] mx-auto grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3 relative"
         id="meal-list"
-      >      
-    </div>
-    
-    <!-- ================ Searched Meal Result Area ================ -->
-    <section id="meal-info-section" class="">
-    </section>
+      ></div>
+
+      <!-- ================ Searched Meal Result Area ================ -->
+      <section id="meal-info-section" class=""></section>
     </main>
 
     <!-- ================ External JS ================ -->
